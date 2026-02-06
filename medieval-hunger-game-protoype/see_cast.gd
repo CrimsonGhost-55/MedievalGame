@@ -1,0 +1,1 @@
+class_name Player_hand extends RayCast3D

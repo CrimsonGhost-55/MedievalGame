@@ -1,0 +1,97 @@
+[gd_scene format=3 uid="uid://lccdc20iocxy"]
+
+[ext_resource type="PackedScene" uid="uid://x1v3wsuuya02" path="res://player.tscn" id="1_gojnm"]
+[ext_resource type="PackedScene" uid="uid://brka3ai73amxy" path="res://food_item.tscn" id="2_1c2mv"]
+[ext_resource type="PackedScene" uid="uid://dpcq2xxky5mnf" path="res://thrown_food.tscn" id="2_4ptq8"]
+[ext_resource type="PackedScene" uid="uid://dks7ptj0bnp4u" path="res://enemy.tscn" id="3_f7g2b"]
+[ext_resource type="PackedScene" uid="uid://vxswb5r75j0w" path="res://exit_level.tscn" id="5_sb12i"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gojnm"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_1c2mv"]
+sky_material = SubResource("ProceduralSkyMaterial_gojnm")
+
+[sub_resource type="Environment" id="Environment_f7g2b"]
+background_mode = 2
+sky = SubResource("Sky_1c2mv")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_f7g2b"]
+vertices = PackedVector3Array(-14, 0.70000005, -5.75, -9, 0.70000005, -5.75, -9, 0.70000005, -6.75, -8.25, 0.70000005, -7.5, -7.25, 0.70000005, -14, -14, 0.70000005, -14, -7.25, 0.70000005, -7.5, -1.75, 0.70000005, -6.75, -1.75, 0.70000005, -5.75, -1.5, 0.70000005, -5.75, -1.5, 0.70000005, -6.75, -4.25, 0.70000005, -7.5, -1.5, 0.70000005, -9.25, -1.5, 0.70000005, -10.75, -6.5, 0.70000005, -7.5, -5.75, 0.70000005, -6.75, -5.75, 0.70000005, -5.75, -5, 0.70000005, -5.75, -5, 0.70000005, -6.75, -2.5, 0.70000005, -7.5, -0.75, 0.70000005, -7.5, -0.75, 0.70000005, -8.5, 0, 0.70000005, -7.5, 0, 0.70000005, -8.5, 0, 0.70000005, -11.75, 0, 0.70000005, -14, 1, 0.70000005, -7.5, 1.25, 0.70000005, -7, 1.75, 0.70000005, -7.5, 1, 0.70000005, -8.5, 3.5, 0.70000005, -7.5, 3.75, 0.70000005, -7, 4.5, 0.70000005, -7.5, 10.25, 0.70000005, -7.5, 11, 0.70000005, -6.75, 14, 0.70000005, -5.75, 14, 0.70000005, -14, 1.75, 0.70000005, -10.75, 1.75, 0.70000005, -9.25, 11, 0.70000005, -5.75, 1.75, 0.70000005, -4.25, 1.25, 0.70000005, -4.75, 1, 0.70000005, -4.25, 14, 0.70000005, 14, -1.5, 0.70000005, -5, -1.75, 0.70000005, -5, -6.5, 0.70000005, -4.25, -8.25, 0.70000005, -4.25, -14, 0.70000005, 14, 4.5, 0.70000005, -4.25, 3.75, 0.70000005, -4.75, 3.5, 0.70000005, -4.25, -5, 0.70000005, -5, -5.75, 0.70000005, -5, -0.75, 0.70000005, -4.25, -2.5, 0.70000005, -4.25, -4.25, 0.70000005, -4.25, 10.25, 0.70000005, -4.25, 11, 0.70000005, -5, -9, 0.70000005, -5)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(2, 0, 3), PackedInt32Array(3, 0, 5), PackedInt32Array(3, 5, 4), PackedInt32Array(4, 6, 3), PackedInt32Array(10, 9, 7), PackedInt32Array(7, 9, 8), PackedInt32Array(12, 11, 13), PackedInt32Array(13, 11, 14), PackedInt32Array(18, 17, 15), PackedInt32Array(15, 17, 16), PackedInt32Array(12, 19, 11), PackedInt32Array(7, 19, 10), PackedInt32Array(10, 19, 20), PackedInt32Array(20, 19, 21), PackedInt32Array(21, 19, 12), PackedInt32Array(21, 23, 20), PackedInt32Array(20, 23, 22), PackedInt32Array(24, 13, 25), PackedInt32Array(25, 13, 4), PackedInt32Array(4, 13, 14), PackedInt32Array(4, 14, 6), PackedInt32Array(15, 14, 18), PackedInt32Array(18, 14, 11), PackedInt32Array(27, 26, 28), PackedInt32Array(28, 26, 29), PackedInt32Array(32, 31, 30), PackedInt32Array(26, 22, 29), PackedInt32Array(29, 22, 23), PackedInt32Array(34, 33, 35), PackedInt32Array(35, 33, 36), PackedInt32Array(37, 24, 25), PackedInt32Array(29, 38, 28), PackedInt32Array(28, 38, 30), PackedInt32Array(37, 25, 32), PackedInt32Array(32, 25, 33), PackedInt32Array(33, 25, 36), PackedInt32Array(35, 39, 34), PackedInt32Array(30, 38, 32), PackedInt32Array(32, 38, 37), PackedInt32Array(41, 40, 42), PackedInt32Array(42, 40, 43), PackedInt32Array(45, 8, 44), PackedInt32Array(44, 8, 9), PackedInt32Array(48, 47, 46), PackedInt32Array(50, 49, 51), PackedInt32Array(51, 49, 43), PackedInt32Array(53, 16, 52), PackedInt32Array(52, 16, 17), PackedInt32Array(42, 43, 54), PackedInt32Array(54, 43, 48), PackedInt32Array(44, 54, 45), PackedInt32Array(45, 54, 55), PackedInt32Array(55, 54, 48), PackedInt32Array(52, 56, 53), PackedInt32Array(53, 56, 46), PackedInt32Array(46, 56, 48), PackedInt32Array(49, 57, 43), PackedInt32Array(48, 56, 55), PackedInt32Array(58, 39, 35), PackedInt32Array(58, 35, 57), PackedInt32Array(57, 35, 43), PackedInt32Array(0, 1, 59), PackedInt32Array(59, 47, 0), PackedInt32Array(0, 47, 48), PackedInt32Array(40, 51, 43)]
+cell_height = 0.1
+agent_radius = 1.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hsoxx"]
+size = Vector3(30, 1, 30)
+
+[sub_resource type="BoxMesh" id="BoxMesh_gojnm"]
+
+[node name="TestLevel" type="Node3D" unique_id=971226196]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1888907214]
+environment = SubResource("Environment_f7g2b")
+
+[node name="Player" parent="." unique_id=461144125 instance=ExtResource("1_gojnm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.133676, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1186938531]
+transform = Transform3D(0.9964487, 0.05670501, 0.062245786, -0.082928, 0.78900725, 0.6087614, -0.014592558, -0.6117614, 0.7909077, 0, 5.30838, 3.9074354)
+light_color = Color(1, 0.9647059, 0.7294118, 1)
+shadow_enabled = true
+
+[node name="Node" type="Node" parent="." unique_id=779327769]
+
+[node name="Node2" type="Node" parent="." unique_id=1585079462]
+
+[node name="ThrownFood" parent="." unique_id=101873407 instance=ExtResource("2_4ptq8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.086899, 2.0149531, -12.9923)
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1618555077]
+navigation_mesh = SubResource("NavigationMesh_f7g2b")
+
+[node name="Floor" type="StaticBody3D" parent="NavigationRegion3D" unique_id=2013160074]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Floor" unique_id=1085028966]
+shape = SubResource("BoxShape3D_hsoxx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Floor" unique_id=1644430008]
+transform = Transform3D(30, 0, 0, 0, 1, 0, 0, 0, 30, 0, 0, 0)
+mesh = SubResource("BoxMesh_gojnm")
+
+[node name="Enemy" parent="NavigationRegion3D" unique_id=814559678 instance=ExtResource("3_f7g2b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.18140125, 2.1320894, 11.273535)
+player_path = NodePath("../../Player")
+food_path = NodePath("../../ThrownFood")
+
+[node name="Enemy2" parent="NavigationRegion3D" unique_id=1596931860 instance=ExtResource("3_f7g2b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.4555216, 2.1320894, 11.273535)
+player_path = NodePath("../../Player")
+food_path = NodePath("../../ThrownFood")
+
+[node name="FoodItem" parent="NavigationRegion3D" unique_id=2129426352 instance=ExtResource("2_1c2mv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1783996, -5.9917827)
+
+[node name="FoodItem2" parent="NavigationRegion3D" unique_id=309390795 instance=ExtResource("2_1c2mv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7222414, 1.1783996, -5.9917827)
+
+[node name="FoodItem3" parent="NavigationRegion3D" unique_id=1491030422 instance=ExtResource("2_1c2mv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.334755, 1.1783996, -5.9917827)
+
+[node name="FoodItem4" parent="NavigationRegion3D" unique_id=503328312 instance=ExtResource("2_1c2mv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4543974, 1.1783996, -5.9917827)
+
+[node name="FoodItem5" parent="NavigationRegion3D" unique_id=1818476362 instance=ExtResource("2_1c2mv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.331175, 1.1783996, -5.9917827)
+
+[node name="FoodItem6" parent="NavigationRegion3D" unique_id=259102551 instance=ExtResource("2_1c2mv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5238333, 1.1783996, -5.9917827)
+
+[node name="FoodItem7" parent="NavigationRegion3D" unique_id=1557146662 instance=ExtResource("2_1c2mv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.361545, 1.1783996, -5.9917827)
+
+[node name="ExitLevel" parent="." unique_id=1160335140 instance=ExtResource("5_sb12i")]
+transform = Transform3D(1.725, 0, 0, 0, 2.535, 0, 0, 0, 1.11, 12.411239, 1.809669, 12.134663)

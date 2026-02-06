@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://dr43w8a3reucl"]
+
+[ext_resource type="Script" uid="uid://bjb6rgnpf7ts" path="res://control_menu.gd" id="1_bkl5u"]
+[ext_resource type="PackedScene" uid="uid://rs1flyrjgm0g" path="res://settings_tab_container.tscn" id="1_ggsak"]
+
+[node name="ControlsMenu" type="Control" unique_id=414875959]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bkl5u")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1341106104]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1610788703]
+layout_mode = 2
+theme_override_constants/separation = -48
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=433653166]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 32
+text = "Controls"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SettingsTabContainer" parent="MarginContainer/VBoxContainer" unique_id=975179285 instance=ExtResource("1_ggsak")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ExitButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1469585561]
+custom_minimum_size = Vector2(120, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = "Exit"

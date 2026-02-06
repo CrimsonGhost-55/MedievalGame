@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://bqyamrfso861a"]
+
+[ext_resource type="PackedScene" uid="uid://b15ch08bgqwka" path="res://omni_light_3d_blue.tscn" id="1_hdgcg"]
+
+[node name="light" type="Node3D" unique_id=1133703381]
+
+[node name="OmniLight3D2" parent="." unique_id=879345012 instance=ExtResource("1_hdgcg")]
+light_color = Color(0.91390204, 0.44880205, 0.07192483, 1)

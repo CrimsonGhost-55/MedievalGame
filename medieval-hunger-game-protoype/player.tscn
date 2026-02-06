@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://x1v3wsuuya02"]
+
+[ext_resource type="Script" uid="uid://dyj14bbpb5ske" path="res://character_body_3d.gd" id="1_fb3t6"]
+[ext_resource type="Script" uid="uid://fbxyad2ogomh" path="res://head_camera.gd" id="2_vd578"]
+[ext_resource type="Script" uid="uid://hgy4fxgi3wmd" path="res://see_cast.gd" id="3_nl27k"]
+[ext_resource type="PackedScene" uid="uid://ddmks06ulrgm0" path="res://Staminabar.tscn" id="3_vd578"]
+[ext_resource type="PackedScene" uid="uid://c0cqbh13qi5yp" path="res://food_amount.tscn" id="4_c7tqt"]
+[ext_resource type="PackedScene" uid="uid://cimpg1bmhqsld" path="res://healthbar.tscn" id="6_obynr"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_c7tqt"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_nl27k"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_obynr"]
+radius = 0.5551758
+
+[node name="Player" type="CharacterBody3D" unique_id=683224540 groups=["Player"]]
+script = ExtResource("1_fb3t6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=450083388]
+shape = SubResource("CapsuleShape3D_c7tqt")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1751665519]
+mesh = SubResource("CapsuleMesh_nl27k")
+
+[node name="Head" type="Node3D" parent="." unique_id=1463200856]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.72176147, -0.04094532)
+script = ExtResource("2_vd578")
+
+[node name="Camera3D" type="Camera3D" parent="Head" unique_id=1208692976]
+
+[node name="Hand" type="Marker3D" parent="Head/Camera3D" unique_id=2144641155]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.023896098, -3.5646715)
+
+[node name="SeeCast" type="RayCast3D" parent="Head/Camera3D" unique_id=1989369978]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.5, 0, 0, 0.24325076)
+target_position = Vector3(0, 0, -4)
+script = ExtResource("3_nl27k")
+
+[node name="ThrowMaker" type="Marker3D" parent="Head" unique_id=1647734073]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.4566368)
+
+[node name="StaminaBar" parent="." unique_id=1962409081 instance=ExtResource("3_vd578")]
+
+[node name="FoodAmount" parent="." unique_id=1256735136 instance=ExtResource("4_c7tqt")]
+
+[node name="Healthbar" parent="." unique_id=178140834 instance=ExtResource("6_obynr")]
+
+[node name="Area3D" type="Area3D" parent="." unique_id=753565640]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1930801767]
+shape = SubResource("CapsuleShape3D_obynr")
+
+[node name="Timer" type="Timer" parent="." unique_id=1596302599]
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
