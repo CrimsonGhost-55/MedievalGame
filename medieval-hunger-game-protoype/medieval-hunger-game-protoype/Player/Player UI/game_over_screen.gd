@@ -18,7 +18,8 @@ func show_gameover():
 func _on_restart_button_pressed() -> void:
 	print("Is pressed")
 	GameState.set_value("health", 100)
-	get_tree().reload_surrent_scene()
+	GameState.set_value("hunger", 100)
+	get_tree().reload_current_scene()
 
 
 func _on_quit_button_pressed() -> void:

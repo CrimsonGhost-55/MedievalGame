@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://xeqfw356wo8k" path="res://Levels/stairs.tscn" id="5_6rv3n"]
 [ext_resource type="PackedScene" uid="uid://by1g13fvc5t3b" path="res://Interactables/previous_level.tscn" id="6_1hhqv"]
 [ext_resource type="PackedScene" uid="uid://cur5tucp5sp28" path="res://Interactables/next_level.tscn" id="7_1hhqv"]
+[ext_resource type="PackedScene" uid="uid://bliwvb8npyt4b" path="res://Interactables/chest.tscn" id="8_2cnfy"]
+[ext_resource type="PackedScene" uid="uid://dldj3j6wblwsj" path="res://InteractionFolder/door.tscn" id="9_4q2fa"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_fe1fq"]
 
@@ -386,3 +388,38 @@ transform = Transform3D(-1.7348847e-07, 0, 1, 0, 3.203322, 0, -3.9689536, 0, -4.
 
 [node name="Marker3D" type="Marker3D" parent="." unique_id=390470569]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.507, 0, 75.669)
+
+[node name="Chest" parent="." unique_id=2048806239 instance=ExtResource("8_2cnfy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.8715706, -0.92498124, 15.823559)
+itemID = "Food"
+item_amount = 3
+prompt_input = "interact"
+
+[node name="Chest2" parent="." unique_id=1768213186 instance=ExtResource("8_2cnfy")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 20.140627, -0.92498124, 56.994488)
+itemID = "Food"
+item_amount = 2
+prompt_input = "interact"
+
+[node name="doors" type="Node" parent="." unique_id=929780862]
+
+[node name="Door" parent="doors" unique_id=929252769 instance=ExtResource("9_4q2fa")]
+transform = Transform3D(-4.371138e-08, 0, -0.9999998, 0, 1, 0, 0.9999998, 0, -4.371138e-08, 16.589588, 1, 52.02954)
+
+[node name="Door2" parent="doors" unique_id=8097515 instance=ExtResource("9_4q2fa")]
+transform = Transform3D(0.99999976, 0, 0, 0, 1, 0, 0, 0, 0.99999976, -21.013874, 1, 14.755958)
+
+[node name="Door3" parent="doors" unique_id=1571339931 instance=ExtResource("9_4q2fa")]
+transform = Transform3D(0.99999976, 0, 0, 0, 1, 0, 0, 0, 0.99999976, -1.0706406, 1, 18.324116)
+
+[node name="Door4" parent="doors" unique_id=744276253 instance=ExtResource("9_4q2fa")]
+transform = Transform3D(0.99999976, 0, 0, 0, 1, 0, 0, 0, 0.99999976, -60.984375, 1, 2.7686095)
+
+[node name="Door5" parent="doors" unique_id=148149655 instance=ExtResource("9_4q2fa")]
+transform = Transform3D(-4.3711378e-08, 0, -0.99999976, 0, 1, 0, 0.99999976, 0, -4.3711378e-08, -55.731743, 1, 19.95239)
+
+[node name="Door6" parent="doors" unique_id=1131006191 instance=ExtResource("9_4q2fa")]
+transform = Transform3D(-4.3711378e-08, 0, 0.99999976, 0, 1, 0, -0.99999976, 0, -4.3711378e-08, -74.20895, 1, 55.982018)
+
+[node name="Door7" parent="doors" unique_id=1455519016 instance=ExtResource("9_4q2fa")]
+transform = Transform3D(-4.3711378e-08, 0, 0.99999976, 0, 1, 0, -0.99999976, 0, -4.3711378e-08, -54.23998, 1, 75.997055)

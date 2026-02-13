@@ -28,7 +28,7 @@ var knockback_timer: float = 0.0
 var knockback_resistance = 10
 var y_speed := 0
 
-@onready var game_over_ui = $UI/GameOverScreen
+@onready var game_over_ui = $CanvasLayer/GameOverScreen
 
 var throwable_food = load("res://Interactables/thrown_food.tscn")
 @onready var pos = $Head/Hand
@@ -108,7 +108,7 @@ func crouch():
 
 
 func _input(event: InputEvent) -> void:
-	if event is InputEventMouseMotion:
+	if event is InputEventMouseMotion and moving == true:
 		look_rot.y -= (event.relative.x * sensitivity)
 		look_rot.x -= (event.relative.y * sensitivity)
 		look_rot.x = clamp(look_rot.x, min_angle, max_angle)
