@@ -65,10 +65,6 @@ text = "Use Mouse to look around"
 layout_mode = 2
 text = "Press E or Right click to pick up"
 
-[node name="Label6" type="Label" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer" unique_id=1866111162]
-layout_mode = 2
-text = "Press Q to drop"
-
 [node name="Label7" type="Label" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer" unique_id=2134564270]
 layout_mode = 2
 text = "Press F or Left Click to throw"

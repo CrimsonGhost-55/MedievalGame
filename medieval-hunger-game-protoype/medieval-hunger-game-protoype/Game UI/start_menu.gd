@@ -8,7 +8,7 @@ extends Control
 @onready var margin_container = $MarginContainer as MarginContainer
 @onready var control_menu = $OptionMenu as ControlsMenu
 
-@onready var start_level = preload("res://Levels/levelLayout.tscn") as PackedScene
+@onready var start_level = preload("res://Levels/Maze_1.tscn") as PackedScene
 
 
 # Called when the node enters the scene tree for the first time.
