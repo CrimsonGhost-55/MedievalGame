@@ -1,0 +1,147 @@
+[gd_scene format=3 uid="uid://lccdc20iocxy"]
+
+[ext_resource type="Script" uid="uid://bhptguvg8gfs4" path="res://GameState/game_state.gd" id="1_tc6tp"]
+[ext_resource type="PackedScene" uid="uid://x1v3wsuuya02" path="res://Player/player.tscn" id="2_k8b6b"]
+[ext_resource type="PackedScene" uid="uid://dpcq2xxky5mnf" path="res://Interactables/thrown_food.tscn" id="3_lx7qo"]
+[ext_resource type="PackedScene" uid="uid://clysiwetdt610" path="res://Enemy/enemythehungry.tscn" id="4_dkv23"]
+[ext_resource type="PackedScene" uid="uid://brka3ai73amxy" path="res://Interactables/food_item.tscn" id="5_x458k"]
+[ext_resource type="PackedScene" uid="uid://vxswb5r75j0w" path="res://Interactables/exit_level.tscn" id="6_lrol0"]
+[ext_resource type="PackedScene" uid="uid://bfs550d8o24m2" path="res://Interactables/sign.tscn" id="7_ouwm7"]
+[ext_resource type="PackedScene" uid="uid://dldj3j6wblwsj" path="res://InteractionFolder/door.tscn" id="8_662sx"]
+[ext_resource type="PackedScene" uid="uid://bliwvb8npyt4b" path="res://Interactables/chest.tscn" id="9_cn5b1"]
+[ext_resource type="PackedScene" uid="uid://cur5tucp5sp28" path="res://Interactables/next_level.tscn" id="10_i45ex"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gojnm"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_1c2mv"]
+sky_material = SubResource("ProceduralSkyMaterial_gojnm")
+
+[sub_resource type="Environment" id="Environment_f7g2b"]
+background_mode = 2
+sky = SubResource("Sky_1c2mv")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_lowby"]
+vertices = PackedVector3Array(-14.25, 0.6700001, -6, -8.25, 0.6700001, -6, -8, 0.6700001, -6.75, -8.25, 0.6700001, -14.25, -14.25, 0.6700001, -14.25, 5.75, 0.6700001, -7, 6.25, 0.6700001, -6, 6.5, 0.6700001, -6, 7, 0.6700001, -7, 8, 0.6700001, -7, 14.25, 0.6700001, -14.25, 3.25, 0.6700001, -7, 3.75, 0.6700001, -6, 4.25, 0.6700001, -6, 4.75, 0.6700001, -7, -0.5, 0.6700001, -7, 0.5, 0.6700001, -7, 1, 0.6700001, -6, 1.75, 0.6700001, -6, 2.25, 0.6700001, -7, 8.25, 0.6700001, -6.5, 9.75, 0.6700001, -7, -3, 0.6700001, -7, -2.5, 0.6700001, -6, -1, 0.6700001, -6, -6.75, 0.6700001, -7, -6.25, 0.6700001, -6, -4.5, 0.6700001, -6, -4, 0.6700001, -7, 10.25, 0.6700001, -6, 14.25, 0.6700001, -6, 7, 0.6700001, -5, 5.75, 0.6700001, -5, 14.25, 0.6700001, 14.25, -6.75, 0.6700001, -5, -7.75, 0.6700001, -5, -14.25, 0.6700001, 14.25, 4.75, 0.6700001, -5, 3.25, 0.6700001, -5, 8, 0.6700001, -5, 2.25, 0.6700001, -5, 9.75, 0.6700001, -5, 8.25, 0.6700001, -5.5, 0.5, 0.6700001, -5, -0.5, 0.6700001, -5, -3, 0.6700001, -5, -4, 0.6700001, -5)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(3, 0, 4), PackedInt32Array(6, 5, 7), PackedInt32Array(7, 5, 8), PackedInt32Array(10, 9, 8), PackedInt32Array(12, 11, 13), PackedInt32Array(13, 11, 14), PackedInt32Array(16, 15, 3), PackedInt32Array(18, 17, 16), PackedInt32Array(18, 16, 19), PackedInt32Array(19, 16, 3), PackedInt32Array(20, 9, 21), PackedInt32Array(21, 9, 10), PackedInt32Array(24, 23, 22), PackedInt32Array(26, 25, 27), PackedInt32Array(27, 25, 28), PackedInt32Array(28, 25, 3), PackedInt32Array(24, 22, 15), PackedInt32Array(15, 22, 3), PackedInt32Array(10, 5, 14), PackedInt32Array(29, 21, 30), PackedInt32Array(30, 21, 10), PackedInt32Array(25, 2, 3), PackedInt32Array(10, 14, 11), PackedInt32Array(19, 3, 11), PackedInt32Array(11, 3, 10), PackedInt32Array(22, 28, 3), PackedInt32Array(10, 8, 5), PackedInt32Array(7, 31, 6), PackedInt32Array(6, 31, 32), PackedInt32Array(32, 31, 33), PackedInt32Array(36, 35, 34), PackedInt32Array(13, 37, 12), PackedInt32Array(12, 37, 38), PackedInt32Array(38, 37, 33), PackedInt32Array(31, 39, 33), PackedInt32Array(17, 18, 40), PackedInt32Array(42, 41, 39), PackedInt32Array(39, 41, 33), PackedInt32Array(17, 40, 43), PackedInt32Array(43, 40, 33), PackedInt32Array(24, 44, 23), PackedInt32Array(23, 44, 45), PackedInt32Array(27, 46, 26), PackedInt32Array(26, 46, 34), PackedInt32Array(34, 46, 36), PackedInt32Array(36, 46, 45), PackedInt32Array(40, 38, 33), PackedInt32Array(29, 30, 41), PackedInt32Array(41, 30, 33), PackedInt32Array(1, 35, 0), PackedInt32Array(0, 35, 36), PackedInt32Array(36, 45, 44), PackedInt32Array(37, 32, 33), PackedInt32Array(43, 33, 44), PackedInt32Array(44, 33, 36)]
+cell_height = 0.09
+agent_radius = 0.6
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hsoxx"]
+size = Vector3(30, 1, 30)
+
+[sub_resource type="BoxMesh" id="BoxMesh_gojnm"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_tc6tp"]
+viewport_path = NodePath("SubViewport2")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_k8b6b"]
+viewport_path = NodePath("SubViewport")
+
+[node name="TestLevel" type="Node3D" unique_id=971226196]
+script = ExtResource("1_tc6tp")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1888907214]
+environment = SubResource("Environment_f7g2b")
+
+[node name="Player" parent="." unique_id=461144125 instance=ExtResource("2_k8b6b")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 3.5181994, 2.133676, -12.279423)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1186938531]
+transform = Transform3D(0.9964487, 0.05670501, 0.062245786, -0.082928, 0.78900725, 0.6087614, -0.014592558, -0.6117614, 0.7909077, 0, 5.30838, 3.9074354)
+light_color = Color(1, 0.9647059, 0.7294118, 1)
+shadow_enabled = true
+
+[node name="Node" type="Node" parent="." unique_id=779327769]
+
+[node name="Node2" type="Node" parent="." unique_id=1585079462]
+
+[node name="ThrownFood" parent="." unique_id=101873407 instance=ExtResource("3_lx7qo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.086899, 2.0149531, -12.9923)
+
+[node name="Enemy" parent="." unique_id=382109537 instance=ExtResource("4_dkv23")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1887064, 3, 8.131405)
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1618555077]
+navigation_mesh = SubResource("NavigationMesh_lowby")
+
+[node name="Floor" type="StaticBody3D" parent="NavigationRegion3D" unique_id=2013160074]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Floor" unique_id=1085028966]
+shape = SubResource("BoxShape3D_hsoxx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Floor" unique_id=1644430008]
+transform = Transform3D(30, 0, 0, 0, 1, 0, 0, 0, 30, 0, 0, 0)
+mesh = SubResource("BoxMesh_gojnm")
+
+[node name="FoodItem" parent="NavigationRegion3D" unique_id=2129426352 instance=ExtResource("5_x458k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1783996, -5.9917827)
+prompt_message = "Pick Up"
+
+[node name="FoodItem2" parent="NavigationRegion3D" unique_id=309390795 instance=ExtResource("5_x458k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7222414, 1.1783996, -5.9917827)
+prompt_message = "Pick Up"
+
+[node name="FoodItem3" parent="NavigationRegion3D" unique_id=1491030422 instance=ExtResource("5_x458k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.334755, 1.1783996, -5.9917827)
+prompt_message = "Pick Up"
+
+[node name="FoodItem4" parent="NavigationRegion3D" unique_id=503328312 instance=ExtResource("5_x458k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4543974, 1.1783996, -5.9917827)
+prompt_message = "Pick Up"
+
+[node name="FoodItem5" parent="NavigationRegion3D" unique_id=1818476362 instance=ExtResource("5_x458k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.331175, 1.1783996, -5.9917827)
+prompt_message = "Pick Up"
+
+[node name="FoodItem6" parent="NavigationRegion3D" unique_id=259102551 instance=ExtResource("5_x458k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5238333, 1.1783996, -5.9917827)
+prompt_message = "Pick Up"
+
+[node name="FoodItem7" parent="NavigationRegion3D" unique_id=1557146662 instance=ExtResource("5_x458k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.361545, 1.1783996, -5.9917827)
+prompt_message = "Pick Up"
+
+[node name="ExitLevel" parent="." unique_id=1160335140 instance=ExtResource("6_lrol0")]
+transform = Transform3D(1.725, 0, 0, 0, 2.535, 0, 0, 0, 1.11, 12.411239, 1.809669, 12.134663)
+
+[node name="Sign" parent="." unique_id=1779779301 instance=ExtResource("7_ouwm7")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -11.954779, 0.7727988, 5)
+
+[node name="Label" parent="Sign/SubViewport2" parent_id_path=PackedInt32Array(1779779301, 1988828590) index="0" unique_id=1109496230]
+text = "Hello"
+
+[node name="Sprite3D2" parent="Sign" index="5" unique_id=62140585]
+texture = SubResource("ViewportTexture_tc6tp")
+
+[node name="Sprite3D" parent="Sign" index="7" unique_id=772846068]
+texture = SubResource("ViewportTexture_k8b6b")
+
+[node name="Door" parent="." unique_id=1191840203 instance=ExtResource("8_662sx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.104342, 2.521669, -11.620697)
+
+[node name="Chest" parent="." unique_id=2048806239 instance=ExtResource("9_cn5b1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.54632807, -12.572621)
+prompt_input = "interact"
+
+[node name="NextLevel" parent="." unique_id=289173879 instance=ExtResource("10_i45ex")]
+transform = Transform3D(3.2164743, 0, 0, 0, 3.203322, 0, 0, 0, 1, -12.085521, 1.8259764, 9.975866)
+
+[node name="Marker3D" type="Marker3D" parent="." unique_id=1922021055]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.999336, 0.49169618, -14.998913)
+
+[node name="Marker3D2" type="Marker3D" parent="." unique_id=1281017003]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.999817, 0.49169618, 15.001087)
+
+[connection signal="food_amount" from="NavigationRegion3D/FoodItem" to="Player" method="_add_food_amount"]
+[connection signal="food_amount" from="NavigationRegion3D/FoodItem2" to="Player" method="_add_food_amount"]
+[connection signal="food_amount" from="NavigationRegion3D/FoodItem3" to="Player" method="_add_food_amount"]
+[connection signal="food_amount" from="NavigationRegion3D/FoodItem4" to="Player" method="_add_food_amount"]
+[connection signal="food_amount" from="NavigationRegion3D/FoodItem5" to="Player" method="_add_food_amount"]
+[connection signal="food_amount" from="NavigationRegion3D/FoodItem6" to="Player" method="_add_food_amount"]
+[connection signal="food_amount" from="NavigationRegion3D/FoodItem7" to="Player" method="_add_food_amount"]
+
+[editable path="Sign"]

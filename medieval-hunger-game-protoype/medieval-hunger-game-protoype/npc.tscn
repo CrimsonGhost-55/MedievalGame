@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://okeno01do3rm"]
+
+[ext_resource type="Script" uid="uid://d0vctg3l4apww" path="res://Dialogue/dialogueplayer.gd" id="1_ideak"]
+[ext_resource type="PackedScene" uid="uid://boft83fyhqlue" path="res://Dialogue/dialogue.tscn" id="2_xxcha"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xxcha"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_kh24r"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_xxcha"]
+
+[node name="NPC" type="StaticBody3D" unique_id=29989725]
+script = ExtResource("1_ideak")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=264901324]
+shape = SubResource("CapsuleShape3D_xxcha")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1127758237]
+mesh = SubResource("CapsuleMesh_kh24r")
+
+[node name="Dialogue" parent="." unique_id=1605138447 instance=ExtResource("2_xxcha")]
+
+[node name="NPCArea" type="Area3D" parent="." unique_id=1120903475]
+transform = Transform3D(4.68, 0, 0, 0, 4.68, 0, 0, 0, 4.68, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPCArea" unique_id=490412080]
+shape = SubResource("SphereShape3D_xxcha")
+
+[connection signal="interacted" from="." to="." method="_on_interacted"]
+[connection signal="body_entered" from="NPCArea" to="." method="_on_npc_area_body_entered"]
+[connection signal="body_exited" from="NPCArea" to="." method="_on_npc_area_body_exited"]

@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dlypycvyhboy3"]
+
+[ext_resource type="Script" uid="uid://evprmk8fv3wm" path="res://InteractionFolder/interactable.gd" id="1_uyirm"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_so0tt"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uyirm"]
+
+[node name="DoorHandle" type="StaticBody3D" unique_id=767818049]
+transform = Transform3D(0.25, 0, 0, 0, 0.63, 0, 0, 0, 0.965, 0, 0, 0)
+script = ExtResource("1_uyirm")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1801632188]
+mesh = SubResource("BoxMesh_so0tt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1023510200]
+transform = Transform3D(20.124617, 0, 0, 0, 6.4002123, 0, 0, 0, 1.8906823, -8.4042, 0, 0)
+shape = SubResource("BoxShape3D_uyirm")

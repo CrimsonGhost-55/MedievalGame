@@ -1,0 +1,109 @@
+[gd_scene format=3 uid="uid://rs1flyrjgm0g"]
+
+[node name="SettingsTabContainer" type="Control" unique_id=975179285]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TabContainer" type="TabContainer" parent="." unique_id=323534440]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 100.0
+offset_top = 50.0
+offset_right = -100.0
+offset_bottom = -100.0
+grow_horizontal = 2
+grow_vertical = 2
+tab_alignment = 1
+current_tab = 0
+
+[node name="Controls" type="TabBar" parent="TabContainer" unique_id=981564983]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Controls" unique_id=1314957467]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Controls/MarginContainer" unique_id=938843213]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Controls/MarginContainer/ScrollContainer" unique_id=1230873621]
+layout_mode = 2
+theme_override_constants/separation = 62
+
+[node name="Label" type="Label" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer" unique_id=87332345]
+layout_mode = 2
+text = "Press WASD or ArrowKeys to move"
+
+[node name="Label2" type="Label" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer" unique_id=1855439810]
+layout_mode = 2
+text = "Press Left SHIFT to sprint"
+
+[node name="Label3" type="Label" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer" unique_id=1172919848]
+layout_mode = 2
+text = "Press Left CTRL to crouch"
+
+[node name="Label4" type="Label" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer" unique_id=1121724442]
+layout_mode = 2
+text = "Use Mouse to look around"
+
+[node name="Label5" type="Label" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer" unique_id=945299245]
+layout_mode = 2
+text = "Press E or Right click to pick up"
+
+[node name="Label6" type="Label" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer" unique_id=1866111162]
+layout_mode = 2
+text = "Press Q to drop"
+
+[node name="Label7" type="Label" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer" unique_id=2134564270]
+layout_mode = 2
+text = "Press F or Left Click to throw"
+
+[node name="Label8" type="Label" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer" unique_id=1272569701]
+layout_mode = 2
+text = "Press R to Eat"
+
+[node name="Story" type="TabBar" parent="TabContainer" unique_id=1438610799]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Story" unique_id=1683104606]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Story/MarginContainer" unique_id=1253729384]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Story/MarginContainer/ScrollContainer" unique_id=509137973]
+layout_mode = 2
+theme_override_constants/separation = 62
+
+[node name="Label" type="Label" parent="TabContainer/Story/MarginContainer/ScrollContainer/VBoxContainer" unique_id=1195458310]
+layout_mode = 2
+text = "During the Medieval Era a great Plague has struck Paris during a famine. 
+With a shortage of food many have gone in search finding what is left to 
+salvage. You have decided to begin your search in the catacombs in hopes
+of finding anything that is left."

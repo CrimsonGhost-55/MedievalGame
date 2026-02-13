@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://clysiwetdt610"]
+
+[ext_resource type="Script" uid="uid://hmf6qd1y6txd" path="res://Enemy/newenemythehungry.gd" id="1_8tsdj"]
+[ext_resource type="Script" uid="uid://c4c4uyxih0slf" path="res://Enemy/EnemyStateMachine/enemy_state_machine.gd" id="2_hhxnq"]
+[ext_resource type="Script" uid="uid://iyocwyrufwnd" path="res://Enemy/enemy_wander.gd" id="3_ea31h"]
+[ext_resource type="Script" uid="uid://dsqea3chtdgle" path="res://Enemy/enemy_chase.gd" id="4_ea31h"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_7xaro"]
+radius = 1.1601702
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7k104"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7xaro"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_4gyqm"]
+material = SubResource("StandardMaterial3D_7xaro")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4cmwx"]
+albedo_color = Color(0.37630078, 0.6123609, 0.9824868, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_7xaro"]
+material = SubResource("StandardMaterial3D_4cmwx")
+size = Vector3(0.5, 0.2, 0.5)
+
+[node name="Enemy" type="CharacterBody3D" unique_id=1596931860 groups=["Enemy"]]
+script = ExtResource("1_8tsdj")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=640064718]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1615939035]
+transform = Transform3D(0.92460495, 0, 0, 0, 1.3699598, 0, 0, 0, 0.82671654, 0, 0, 0)
+shape = SubResource("SphereShape3D_7xaro")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1390369557]
+transform = Transform3D(1, 0, 0, 0, 1.4, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_7k104")
+
+[node name="Body" type="MeshInstance3D" parent="." unique_id=79932378]
+transform = Transform3D(1, 0, 0, 0, 1.4, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_4gyqm")
+
+[node name="Timer" type="Timer" parent="." unique_id=612238075]
+
+[node name="Face" type="MeshInstance3D" parent="." unique_id=1374361806]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.84060633, -0.28525484)
+mesh = SubResource("BoxMesh_7xaro")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=965732701]
+path_height_offset = 0.1
+avoidance_enabled = true
+
+[node name="StateMachine" type="Node" parent="." unique_id=1084616023 node_paths=PackedStringArray("InitialState")]
+script = ExtResource("2_hhxnq")
+InitialState = NodePath("EnemyChase")
+metadata/_custom_type_script = "uid://c4c4uyxih0slf"
+
+[node name="EnemyWander" type="Node" parent="StateMachine" unique_id=356089130]
+script = ExtResource("3_ea31h")
+metadata/_custom_type_script = "uid://iyocwyrufwnd"
+
+[node name="EnemyChase" type="Node" parent="StateMachine" unique_id=1716368971]
+script = ExtResource("4_ea31h")
+metadata/_custom_type_script = "uid://dsqea3chtdgle"
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

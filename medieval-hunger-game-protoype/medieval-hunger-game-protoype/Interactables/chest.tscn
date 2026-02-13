@@ -1,0 +1,140 @@
+[gd_scene format=3 uid="uid://bliwvb8npyt4b"]
+
+[ext_resource type="Script" uid="uid://buv43mqvw16il" path="res://Interactables/chest.gd" id="1_twpm2"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_0e0a3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_twpm2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8uwsg"]
+
+[sub_resource type="Animation" id="Animation_twpm2"]
+resource_name = "ChestClose"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 1.1170107), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_bp1or"]
+resource_name = "ChestOpen"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node3D:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 1.1170107)]
+}
+
+[sub_resource type="Animation" id="Animation_trlyu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x7mpe"]
+_data = {
+&"ChestClose": SubResource("Animation_twpm2"),
+&"ChestOpen": SubResource("Animation_bp1or"),
+&"RESET": SubResource("Animation_trlyu")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8uwsg"]
+animation = &"ChestClose"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0e0a3"]
+animation = &"ChestOpen"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bp1or"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_trlyu"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_x7mpe"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_8uwsg"]
+states/ChestClose/node = SubResource("AnimationNodeAnimation_8uwsg")
+states/ChestClose/position = Vector2(387.7778, 68.666664)
+states/ChestOpen/node = SubResource("AnimationNodeAnimation_0e0a3")
+states/ChestOpen/position = Vector2(389.33337, 190.22221)
+transitions = ["Start", "ChestClose", SubResource("AnimationNodeStateMachineTransition_bp1or"), "ChestClose", "ChestOpen", SubResource("AnimationNodeStateMachineTransition_trlyu"), "ChestOpen", "ChestClose", SubResource("AnimationNodeStateMachineTransition_x7mpe")]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bp1or"]
+
+[node name="Chest" type="Area3D" unique_id=2048806239]
+script = ExtResource("1_twpm2")
+prompt_message = "Open"
+prompt_input = null
+
+[node name="Node3D" type="Node3D" parent="." unique_id=1053307941]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5361483, 0.47625703, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Node3D" unique_id=2048487478]
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Node3D/StaticBody3D" unique_id=2059031046]
+transform = Transform3D(1, 0, 0, 0, 0.15003753, 0, 0, 0, 1, 0.5361483, 0.08277613, 0)
+mesh = SubResource("BoxMesh_0e0a3")
+skeleton = NodePath("../../../StaticBody3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/StaticBody3D" unique_id=137691885]
+transform = Transform3D(1, 0, 0, 0, 0.15, 0, 0, 0, 1, 0.5347929, 0.07925022, 0)
+shape = SubResource("BoxShape3D_twpm2")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=868602513]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=567635614]
+transform = Transform3D(1, 0, 0, 0, 0.57600003, 0, 0, 0, 1, -0.0033622384, 0.21560043, 0)
+shape = SubResource("BoxShape3D_8uwsg")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=477418460]
+transform = Transform3D(1, 0, 0, 0, 0.15003753, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_0e0a3")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="StaticBody3D" unique_id=767960051]
+transform = Transform3D(1, 0, 0, 0, -6.5583485e-09, -0.65437955, 0, 0.15003753, -2.860384e-08, 0, 0.25265813, 0.41723406)
+mesh = SubResource("BoxMesh_0e0a3")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="StaticBody3D" unique_id=1977295873]
+transform = Transform3D(1, 0, 0, 0, -6.5583485e-09, -0.65437955, 0, 0.15003753, -2.860384e-08, 0, 0.25265813, -0.4282657)
+mesh = SubResource("BoxMesh_0e0a3")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="StaticBody3D" unique_id=1741800648]
+transform = Transform3D(-4.371139e-08, 0.15003753, -2.860384e-08, 0, -6.5583485e-09, -0.65437955, -1, -6.5583485e-09, 1.2503135e-15, 0.42157227, 0.25265813, 0.0010268986)
+mesh = SubResource("BoxMesh_0e0a3")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="StaticBody3D" unique_id=624808900]
+transform = Transform3D(-4.371139e-08, 0.15003753, -2.860384e-08, 0, -6.5583485e-09, -0.65437955, -1, -6.5583485e-09, 1.2503135e-15, -0.42354488, 0.25265813, -0.00010433793)
+mesh = SubResource("BoxMesh_0e0a3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=897573705]
+libraries/ = SubResource("AnimationLibrary_x7mpe")
+
+[node name="AnimationTree" type="AnimationTree" parent="." unique_id=1046667400]
+tree_root = SubResource("AnimationNodeStateMachine_8uwsg")
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1918843342]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.42141712, 0)
+shape = SubResource("BoxShape3D_bp1or")
+
+[connection signal="interacted" from="." to="." method="_on_interacted"]

@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://cur5tucp5sp28"]
+
+[ext_resource type="Script" uid="uid://iomstxunvh8e" path="res://Interactables/next_level.gd" id="1_1m5ts"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bn2et"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1m5ts"]
+albedo_color = Color(0.11699266, 0.6546526, 0.4313274, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_bn2et"]
+material = SubResource("StandardMaterial3D_1m5ts")
+
+[node name="NextLevel" type="Area3D" unique_id=289173879]
+transform = Transform3D(3.2164743, 0, 0, 0, 3.203322, 0, 0, 0, 1, 0, 0, 0)
+script = ExtResource("1_1m5ts")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=753348586]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" unique_id=1415485037]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.23212588)
+shape = SubResource("BoxShape3D_bn2et")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=512204621]
+shape = SubResource("BoxShape3D_bn2et")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=773656507]
+visible = false
+mesh = SubResource("BoxMesh_bn2et")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="interacted" from="." to="." method="_on_interacted"]

@@ -1,0 +1,92 @@
+[gd_scene format=3 uid="uid://x1v3wsuuya02"]
+
+[ext_resource type="Script" uid="uid://dyj14bbpb5ske" path="res://Player/character_body_3d.gd" id="1_fb3t6"]
+[ext_resource type="PackedScene" uid="uid://dc0my6b1kwaie" path="res://InteractionFolder/interact_ray.tscn" id="3_1jxqw"]
+[ext_resource type="PackedScene" uid="uid://ddmks06ulrgm0" path="res://Player/Player UI/Staminabar.tscn" id="3_vd578"]
+[ext_resource type="PackedScene" uid="uid://c0cqbh13qi5yp" path="res://Interactables/food_amount.tscn" id="4_c7tqt"]
+[ext_resource type="PackedScene" uid="uid://dvhy6xlxd7fen" path="res://InteractionFolder/cross_hair.tscn" id="4_dw050"]
+[ext_resource type="PackedScene" uid="uid://btabv8t1b55ik" path="res://Player/Player UI/hunger_bar.tscn" id="5_dw050"]
+[ext_resource type="PackedScene" uid="uid://cimpg1bmhqsld" path="res://Player/Player UI/healthbar.tscn" id="6_obynr"]
+[ext_resource type="PackedScene" uid="uid://bb5wyt5pinq0m" path="res://Player/Player UI/game_over_screen.tscn" id="9_00tjw"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_c7tqt"]
+resource_local_to_scene = true
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_nl27k"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_obynr"]
+radius = 0.5551758
+
+[node name="Player" type="CharacterBody3D" unique_id=683224540 groups=["Player"]]
+script = ExtResource("1_fb3t6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=450083388]
+shape = SubResource("CapsuleShape3D_c7tqt")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1751665519]
+mesh = SubResource("CapsuleMesh_nl27k")
+
+[node name="Head" type="Node3D" parent="." unique_id=1463200856]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.72176147, -0.04094532)
+
+[node name="Camera3D" type="Camera3D" parent="Head" unique_id=1208692976]
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Head/Camera3D" unique_id=755836521]
+light_color = Color(0.8724581, 0.69968355, 0.57095253, 1)
+light_energy = 4.0
+light_volumetric_fog_energy = 0.1
+spot_range = 100.0
+spot_attenuation = 1.3
+spot_angle_attenuation = 3.0
+
+[node name="InteractRay" parent="Head" unique_id=356334689 instance=ExtResource("3_1jxqw")]
+
+[node name="Hand" type="Marker3D" parent="Head" unique_id=334595920]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5925398)
+
+[node name="UI" type="Control" parent="." unique_id=968578700]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StaminaBar" parent="UI" unique_id=1962409081 instance=ExtResource("3_vd578")]
+layout_mode = 1
+
+[node name="Healthbar" parent="UI" unique_id=178140834 instance=ExtResource("6_obynr")]
+layout_mode = 1
+
+[node name="HungerBar" parent="UI" unique_id=393741607 node_paths=PackedStringArray("player") instance=ExtResource("5_dw050")]
+layout_mode = 1
+player = NodePath("../..")
+
+[node name="CrossHair" parent="UI" unique_id=955957945 instance=ExtResource("4_dw050")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1.0
+offset_top = 0.0
+offset_right = 1.0
+offset_bottom = 0.0
+
+[node name="FoodAmount" parent="UI" unique_id=1256735136 instance=ExtResource("4_c7tqt")]
+layout_mode = 1
+
+[node name="GameOverScreen" parent="UI" unique_id=335445674 instance=ExtResource("9_00tjw")]
+visible = false
+layout_mode = 1
+
+[node name="Area3D" type="Area3D" parent="." unique_id=753565640]
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1930801767]
+shape = SubResource("CapsuleShape3D_obynr")
+
+[node name="Timer" type="Timer" parent="." unique_id=1596302599]
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

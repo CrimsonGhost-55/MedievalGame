@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://boft83fyhqlue"]
+
+[node name="Dialogue" type="Control" unique_id=1605138447]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=776156350]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.83500004
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -0.08001709
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Text" type="RichTextLabel" parent="NinePatchRect" unique_id=123073561]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/bold_font_size = 32
+horizontal_alignment = 1
+vertical_alignment = 1

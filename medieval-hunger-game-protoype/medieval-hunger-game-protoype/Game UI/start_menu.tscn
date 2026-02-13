@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://dit2pf78yoggi"]
+
+[ext_resource type="Script" uid="uid://dcbeehiymgro2" path="res://Game UI/start_menu.gd" id="1_ia0g5"]
+[ext_resource type="PackedScene" uid="uid://dr43w8a3reucl" path="res://Game UI/control_menu.tscn" id="2_vpdu5"]
+
+[node name="StartMenu" type="Control" unique_id=2001510953]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ia0g5")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1447610775]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=393790630]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer" unique_id=808893319]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1782377365]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Plague Hunger"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1594354045]
+layout_mode = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=415430384]
+layout_mode = 2
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="Control" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=1660341503]
+layout_mode = 2
+
+[node name="StartButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=1430718181]
+layout_mode = 2
+text = "Start"
+
+[node name="ControlsButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=646396453]
+layout_mode = 2
+text = "Controls"
+
+[node name="ExitButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=2016796995]
+layout_mode = 2
+text = "Exit"
+
+[node name="OptionMenu" parent="." unique_id=414875959 instance=ExtResource("2_vpdu5")]
+visible = false
+layout_mode = 1

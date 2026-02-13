@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://btabv8t1b55ik"]
+
+[ext_resource type="Script" uid="uid://d1he05a7gh144" path="res://Player/Player UI/hunger_bar.gd" id="1_ojjo8"]
+[ext_resource type="Texture2D" uid="uid://bdv6uof2ymtd0" path="res://Player/Player UI/understaminabar.png" id="1_sgh5k"]
+[ext_resource type="Texture2D" uid="uid://brg2cqwjido2a" path="res://Player/Player UI/hungerbar.png" id="2_ojjo8"]
+
+[node name="HungerBar" type="Control" unique_id=393741607]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ojjo8")
+
+[node name="HungerProgressBar" type="TextureProgressBar" parent="." unique_id=1942420798]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.386
+anchor_right = 0.33
+anchor_bottom = 0.46300003
+offset_top = -0.12800598
+offset_right = -0.16000366
+offset_bottom = -0.024017334
+grow_horizontal = 2
+grow_vertical = 2
+nine_patch_stretch = true
+texture_under = ExtResource("1_sgh5k")
+texture_progress = ExtResource("2_ojjo8")
+
+[node name="HungerTimer" type="Timer" parent="." unique_id=1132144858]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="HungerTimer" to="." method="_on_hunger_timer_timeout"]

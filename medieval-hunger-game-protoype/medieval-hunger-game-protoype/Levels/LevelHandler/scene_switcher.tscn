@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://cd3vfd5ory6om"]
+
+[ext_resource type="PackedScene" uid="uid://l6p6rxptvv4i" path="res://Levels/Maze_1.tscn" id="2_lm4bi"]
+
+[node name="SceneSwitcher" type="Node" unique_id=1220314280]
+
+[node name="Maze1" parent="." unique_id=829500125 instance=ExtResource("2_lm4bi")]
+script = null

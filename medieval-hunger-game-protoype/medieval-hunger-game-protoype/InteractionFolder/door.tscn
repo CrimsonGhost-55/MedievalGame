@@ -1,0 +1,113 @@
+[gd_scene format=3 uid="uid://dldj3j6wblwsj"]
+
+[ext_resource type="Script" uid="uid://bvi1avywoj8wd" path="res://Interactables/door.gd" id="1_qkvdp"]
+[ext_resource type="PackedScene" uid="uid://dlypycvyhboy3" path="res://InteractionFolder/door_handle.tscn" id="2_wlm4t"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jlhn5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jlhn5"]
+albedo_color = Color(0.29328504, 0.13560694, 0.0310478, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_qkvdp"]
+material = SubResource("StandardMaterial3D_jlhn5")
+
+[sub_resource type="Animation" id="Animation_qkvdp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hinge:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_jlhn5"]
+resource_name = "close"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hinge:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 1.5707964, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_wlm4t"]
+resource_name = "open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hinge:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1.5707964, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i516g"]
+_data = {
+&"RESET": SubResource("Animation_qkvdp"),
+&"close": SubResource("Animation_jlhn5"),
+&"open": SubResource("Animation_wlm4t")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jlhn5"]
+animation = &"close"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qkvdp"]
+animation = &"open"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_i516g"]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xrgri"]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wlm4t"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_ji2tt"]
+states/close/node = SubResource("AnimationNodeAnimation_jlhn5")
+states/close/position = Vector2(376.8889, 164)
+states/open/node = SubResource("AnimationNodeAnimation_qkvdp")
+states/open/position = Vector2(376, 42.666668)
+transitions = ["open", "close", SubResource("AnimationNodeStateMachineTransition_i516g"), "close", "open", SubResource("AnimationNodeStateMachineTransition_xrgri"), "Start", "open", SubResource("AnimationNodeStateMachineTransition_wlm4t")]
+
+[node name="Door" type="Node3D" unique_id=929252769]
+script = ExtResource("1_qkvdp")
+
+[node name="Hinge" type="Node3D" parent="." unique_id=543754095]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1246493, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Hinge" unique_id=1444803862]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 0.5, 2.1246493, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hinge/StaticBody3D" unique_id=763858792]
+shape = SubResource("BoxShape3D_jlhn5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Hinge/StaticBody3D" unique_id=2043569233]
+mesh = SubResource("BoxMesh_qkvdp")
+
+[node name="DoorHandle" parent="Hinge" unique_id=767818049 instance=ExtResource("2_wlm4t")]
+transform = Transform3D(0.25, 0, 0, 0, 0.63, 0, 0, 0, 0.965, 3.8666844, 0, 0)
+prompt_message = "Open"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=894001372]
+libraries/ = SubResource("AnimationLibrary_i516g")
+
+[node name="AnimationTree" type="AnimationTree" parent="." unique_id=812957050]
+tree_root = SubResource("AnimationNodeStateMachine_ji2tt")
+anim_player = NodePath("../AnimationPlayer")
+
+[connection signal="interacted" from="Hinge/DoorHandle" to="." method="toggle"]

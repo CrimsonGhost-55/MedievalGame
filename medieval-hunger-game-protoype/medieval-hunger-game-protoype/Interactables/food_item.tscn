@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://brka3ai73amxy"]
+
+[ext_resource type="Script" uid="uid://cb8kcf3a1hatq" path="res://Interactables/food_item.gd" id="1_0na5k"]
+[ext_resource type="PackedScene" uid="uid://c507cpev8qmv6" path="res://loafBread.fbx" id="2_m0368"]
+[ext_resource type="AudioStream" uid="uid://b6fqiakg0g7b0" path="res://Sounds/EditBreadSound.mp3" id="3_2dgfr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xlgsp"]
+
+[node name="FoodItem" type="RigidBody3D" unique_id=480233616 groups=["pickable"]]
+script = ExtResource("1_0na5k")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=74511693]
+shape = SubResource("BoxShape3D_xlgsp")
+
+[node name="loafBread" parent="." unique_id=1462435266 instance=ExtResource("2_m0368")]
+
+[node name="loafBread" parent="loafBread" index="0" unique_id=535941299]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=255723497]
+stream = ExtResource("3_2dgfr")
+
+[connection signal="interacted" from="." to="." method="_on_interacted"]
+
+[editable path="loafBread"]

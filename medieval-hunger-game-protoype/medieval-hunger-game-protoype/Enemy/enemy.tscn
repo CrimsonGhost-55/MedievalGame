@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://dks7ptj0bnp4u"]
+
+[ext_resource type="Script" uid="uid://pe0s172cxg23" path="res://Enemy/enemy.gd" id="1_7k104"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7k104"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7xaro"]
+albedo_color = Color(0.6339559, 0.064598, 9.62615e-08, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_4gyqm"]
+material = SubResource("StandardMaterial3D_7xaro")
+
+[sub_resource type="BoxMesh" id="BoxMesh_7xaro"]
+size = Vector3(0.5, 0.2, 0.5)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_7k104"]
+radius = 7.267
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_7xaro"]
+radius = 1.1601702
+
+[node name="Enemy" type="CharacterBody3D" unique_id=1596931860 groups=["Enemy"]]
+script = ExtResource("1_7k104")
+knockback_force = 15.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1390369557]
+shape = SubResource("CapsuleShape3D_7k104")
+
+[node name="Body" type="MeshInstance3D" parent="." unique_id=79932378]
+mesh = SubResource("CapsuleMesh_4gyqm")
+
+[node name="Timer" type="Timer" parent="." unique_id=612238075]
+wait_time = 0.5
+autostart = true
+
+[node name="Face" type="MeshInstance3D" parent="." unique_id=1374361806]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.51552093, -0.28525484)
+mesh = SubResource("BoxMesh_7xaro")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=965732701]
+path_height_offset = 0.1
+
+[node name="RayCast" type="RayCast3D" parent="." unique_id=1952916365]
+transform = Transform3D(-1, 0, -7.54979e-08, 0, 1, 0, 1.509958e-07, 0, -0.5, 0, 0.17603308, 0)
+target_position = Vector3(0, 0, -20)
+debug_shape_custom_color = Color(0.84313726, 0.43529412, 0.20392157, 1)
+
+[node name="FoodRayCast" type="RayCast3D" parent="." unique_id=1249959142]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.61203575, 0)
+target_position = Vector3(0, 0, -30)
+
+[node name="FoodDectector" type="Area3D" parent="." unique_id=2051081523]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FoodDectector" unique_id=1380514323]
+shape = SubResource("SphereShape3D_7k104")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=640064718]
+transform = Transform3D(0.445, 0, 0, 0, 0.855, 0, 0, 0, 0.455, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1615939035]
+shape = SubResource("SphereShape3D_7xaro")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="FoodDectector" to="." method="_on_food_dectector_body_entered"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
